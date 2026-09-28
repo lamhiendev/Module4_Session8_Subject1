@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: file:///D:/TheHien/Module4_Session7_Subject4/medical-config-repo
+          uri: file:///D:/TheHien/Module4_Session7_Subject4
           search-paths: medical-config-repo
           default-label: main
 server:
