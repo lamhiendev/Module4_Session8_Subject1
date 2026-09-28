@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: file:///D:/RikkeiSoft_Workspace/Module4_Session6/Microservices
+          uri: file:///D:/TheHien/Module4_Session7_Subject4/medical-config-repo
           search-paths: medical-config-repo
           default-label: main
 server:
