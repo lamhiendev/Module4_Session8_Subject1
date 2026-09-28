@@ -3,3 +3,11 @@ spring:
     name: appointment-service
   config:
     import: "configserver:http://localhost:8888"
+resilience4j:
+  circuitbreaker:
+    instances:
+      doctorServiceCB:
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 3
