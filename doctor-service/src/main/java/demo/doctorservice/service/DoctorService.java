@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface DoctorService {
     List<Doctor> getAllDoctors();
-
+    Doctor getDoctorById(Long id);
 }

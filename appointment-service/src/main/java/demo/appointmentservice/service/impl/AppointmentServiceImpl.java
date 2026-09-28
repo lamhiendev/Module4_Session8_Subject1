@@ -42,9 +42,10 @@ public class AppointmentServiceImpl implements AppointmentService {
                 .build();
         return newAppointment;
     }
-    public Appointment fallbackAppointment(Long doctorId,Exception e){
-        log.error("Fallback kích hoạt lý do: {}",e.getMessage());
-        return null;
+    public Appointment fallbackAppointment(AppointmentServiceRequest request,Exception e){
+        log.error("Fallback kích hoạt cho Request của Patient ID: {} và Doctor ID: {}. Lý do: {}",
+                request.getPatientId(), request.getDoctorId(), e.getMessage());
+        throw new RuntimeException("Hiện tại không thể kết nối đến Docter-Service");
     }
 
     private boolean checkEntityExists(String url){

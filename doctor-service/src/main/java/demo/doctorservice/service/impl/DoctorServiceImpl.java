@@ -17,10 +17,19 @@ import java.util.List;
 public class DoctorServiceImpl implements DoctorService {
     private final DoctorServiceRepository doctorServiceRepository;
     @Override
-    @CircuitBreaker(name = "doctorServiceCB", fallbackMethod = "fallBackDoctor")
     public List<Doctor> getAllDoctors() {
         return doctorServiceRepository.findAll();
     }
+
+    @Override
+    @CircuitBreaker(name = "doctorServiceCB", fallbackMethod = "fallBackDoctor")
+    public Doctor getDoctorById(Long id) {
+        Doctor newDoctor = doctorServiceRepository.findById(id).orElseThrow(() -> new RuntimeException("Không tìm thấy bác sĩ với ID " + id));
+        return newDoctor;
+    }
+
+
+
     public  Doctor fallBackDoctor(Long doctorId, Exception e){
         log.warn("Fallback kích hoạt lí do {}", e.getMessage());
         throw new DoctorServiceUnavaialbeException("Hiện tại không thể kiểm tra thông tin bác sĩ, vui lòng thử lại sau");
