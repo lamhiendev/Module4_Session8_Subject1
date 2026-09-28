@@ -1,18 +1,5 @@
 spring:
   application:
     name: appointment-service
-  datasource:
-    url: jdbc:postgresql://localhost:5432/appointment_db
-    username: postgres
-    password: postgres
-  jpa:
-    hibernate:
-      ddl-auto: update
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-    fetch-registry: true
-    register-with-eureka: true
-server:
-  port: 8083
+  config:
+    import: "configserver:http://localhost:8888"
