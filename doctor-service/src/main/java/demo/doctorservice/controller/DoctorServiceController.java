@@ -45,4 +45,5 @@ public class DoctorServiceController {
         ).toList();
         return ResponseEntity.ok(responseDTOs);
     }
+
 }
